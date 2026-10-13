@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>సీపీఎస్ తెలుగు – CPS Telugu Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@400;600;800&family=Noto+Sans+Telugu:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f1e6;--fg:#0a1f17;--mut:#4d5f56;--card:#fff;--line:#0a1f1722;--acc:#0b3b2a;--gold:#c8921a;--leaf:#2e9e5b;--mint:#d3ebc6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html{height:100%;scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--fg);font-family:'Noto Sans Telugu','Outfit',sans-serif;line-height:1.7;overflow-x:hidden}
+.h{font-family:'Anek Telugu','Noto Sans Telugu',sans-serif}.l{font-family:'Outfit',sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.hero{position:relative;background:radial-gradient(900px 500px at 80% 10%,#2e9e5b55,transparent 60%),radial-gradient(600px 400px at 10% 90%,#e8b52b33,transparent 60%),#04120f;color:#eef5ea;overflow:hidden;padding:20px 0 90px}
+nav{display:flex;justify-content:space-between;align-items:center;position:relative;gap:10px}
+.logo{display:flex;align-items:center;flex:none}
+.logo img{display:block;width:72px;height:auto;object-fit:contain}
+.nl{display:flex;gap:8px;font-size:13px}
+.nl a,.nl button{display:inline-flex;align-items:center;line-height:1.2;padding:9px 16px 6px;border-radius:99px;border:1px solid #ffffff44;transition:.25s}
+.nl a:hover,.nl button:hover{background:#e8b52b;color:#04120f;border-color:#e8b52b}
+.hero h1{position:relative;font-size:clamp(3rem,11vw,8rem);font-weight:800;line-height:1.3;margin-top:70px;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#9fe0a4,#e8b52b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{position:relative;font-family:Outfit;font-weight:300;letter-spacing:.35em;font-size:clamp(.8rem,2vw,1.3rem);color:#e8b52b;margin-top:4px}
+.hero p.lead{position:relative;max-width:560px;margin-top:26px;color:#ffffffcc;font-size:15px;line-height:2}
+.hero-cta{position:relative;display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:11px 20px;border:1px solid #e8b52b88;border-radius:99px;background:#e8b52b;color:#04120f;font:600 14px Outfit;box-shadow:0 12px 24px -16px #e8b52b;transition:transform .2s,background .2s,box-shadow .2s}
+.hero-cta:hover{transform:translateY(-2px);background:#f2ca62;box-shadow:0 16px 26px -16px #e8b52b}
+body.lv .hero-cta, body.lv .more.rv{display:none !important}
+.hero-cta svg{width:18px;height:18px;flex:none;transition:transform .2s}
+.hero-cta:hover svg{transform:translateX(3px)}
+.cats{position:relative;margin-top:34px}
+.cats .k{display:flex;align-items:center;gap:12px;font:500 11px Outfit;letter-spacing:.35em;text-transform:uppercase;color:#e8b52b}
+.cats .k i{flex:none;width:34px;height:1px;background:#e8b52b88}
+.cats .cw{display:flex;white-space:nowrap;gap:0 .3em;font-family:'Anek Telugu','Outfit',sans-serif;font-weight:800;font-size:clamp(1.7rem,5vw,3rem);line-height:1.5;min-height:1.6em;margin-top:6px;color:#d9f0c9}
+.cats .w{display:inline-block;overflow:hidden;padding:.05em 0 .14em}
+.cats .wi{display:inline-block;transform:translateY(115%) rotate(4deg);transform-origin:left bottom;opacity:0;transition:transform .8s cubic-bezier(.16,1,.3,1),opacity .6s}
+.cats .cw.on .wi{transform:none;opacity:1}
+.cats .cw.out .wi{transform:translateY(-115%) rotate(-3deg);opacity:0;transition-duration:.5s}
+.cats .m{display:flex;align-items:center;gap:14px;margin-top:4px;font:400 12px Outfit;color:#ffffff99}
+.cats .pb{flex:1;max-width:160px;height:2px;background:#ffffff26;overflow:hidden}
+.cats .pb i{display:block;height:100%;background:#e8b52b;transform-origin:left;transform:scaleX(0)}
+.lib{background:var(--bg);border-radius:32px 32px 0 0;margin-top:-34px;position:relative;padding:56px 0 30px}
+.lib h2,.qr h2{font-size:clamp(2rem,6vw,3.6rem);font-weight:800;line-height:1.4;color:var(--acc)}
+.tools{min-width:0;display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:22px}
+.search{flex:1 1 240px;display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 18px}
+.search input{flex:1;border:0;background:none;color:var(--fg);font:inherit;font-size:14px;outline:0;min-width:0}
+.cat-picker{position:relative;flex:0 1 330px;min-width:0}
+.cat-trigger{width:100%;min-height:50px;display:flex;align-items:center;gap:12px;padding:8px 14px;border:1px solid #0b3b2a2e;border-radius:15px;background:linear-gradient(135deg,#fff,#edf5e9);color:var(--fg);text-align:left;box-shadow:0 10px 24px -18px #0b3b2a;transition:border-color .2s,box-shadow .2s,transform .2s}
+.cat-trigger:hover,.cat-picker.open .cat-trigger{border-color:var(--gold);box-shadow:0 0 0 3px #e8b52b24,0 12px 25px -17px #0b3b2a}
+.cat-trigger:active{transform:translateY(1px)}
+.cat-trigger-icon{width:34px;height:34px;display:grid;place-items:center;flex:none;border-radius:11px;background:#0b3b2a;color:#e8b52b}
+.cat-trigger-icon svg{width:18px;height:18px}
+.cat-trigger-copy{min-width:0;flex:1;display:grid;gap:1px}
+.cat-trigger-label{font:500 10px/1.2 Outfit;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.cat-trigger-value{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--acc);font:600 14px/1.4 'Noto Sans Telugu','Outfit',sans-serif}
+.cat-count{display:inline-flex;align-items:center;gap:5px;flex:none;padding:5px 8px;border-radius:99px;background:#e8b52b24;color:var(--acc);font:500 12px Outfit}
+.cat-count svg{width:14px;height:14px;color:#9a6a08}
+.cat-chevron{width:16px;height:16px;flex:none;color:var(--mut);transition:transform .2s}
+.cat-picker.open .cat-chevron{transform:rotate(180deg)}
+.cat-menu{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:30;max-height:min(390px,60vh);overflow:auto;padding:7px;border:1px solid #0b3b2a22;border-radius:17px;background:#fff;box-shadow:0 24px 50px -22px #04120f66;transform-origin:top;animation:cat-pop .18s ease-out}
+.cat-menu[hidden]{display:none}
+@keyframes cat-pop{from{opacity:0;transform:translateY(-5px) scale(.98)}}
+.cat-option{width:100%;display:flex;align-items:center;gap:10px;padding:10px;border-radius:11px;text-align:left;color:var(--fg);transition:background .18s,color .18s}
+.cat-option:hover,.cat-option:focus-visible{background:#f1f5ed}
+.cat-option[aria-selected=true]{background:#0b3b2a;color:#fff}
+.cat-option-name{min-width:0;flex:1;font:500 13px/1.5 'Noto Sans Telugu','Outfit',sans-serif}
+.cat-option-count{display:inline-flex;align-items:center;gap:4px;flex:none;color:var(--mut);font:500 11px Outfit}
+.cat-option-count svg{width:13px;height:13px}
+.cat-option[aria-selected=true] .cat-option-count{color:#f2d78c}
+.cat-option-check{width:16px;height:16px;flex:none;opacity:0;color:#f2d78c}
+.cat-option[aria-selected=true] .cat-option-check{opacity:1}
+.view-toggle{display:inline-flex;gap:3px;align-items:center;padding:4px;border:1px solid var(--line);border-radius:13px;background:#fff;box-shadow:0 8px 20px -17px #0b3b2a}
+.view-button{width:38px;height:38px;display:grid;place-items:center;border-radius:9px;color:var(--mut);transition:background .18s,color .18s,box-shadow .18s}
+.view-button svg{width:18px;height:18px}
+.view-button:hover{background:#f1f5ed;color:var(--acc)}
+.view-button[aria-pressed=true]{background:var(--acc);color:#fff;box-shadow:0 4px 10px -6px #04120f}
+.chip{white-space:nowrap;padding:8px 18px;border-radius:99px;border:1px solid var(--line);background:var(--card);font-size:14px;transition:.25s}
+.chip:hover{border-color:var(--gold)}.chip[aria-pressed=true]{background:var(--acc);color:var(--bg);border-color:var(--acc)}
+.chip small{font:400 11px Outfit;opacity:.65;margin-left:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px;margin-top:22px}
+.grid.list-view{grid-template-columns:1fr;gap:12px}
+.grid.list-view .bk,.preview-row.list-view .bk{flex-direction:row;align-items:center;gap:18px;padding:10px 14px;border-radius:15px}
+.grid.list-view .cov,.preview-row.list-view .cov{width:72px;flex:none;aspect-ratio:3/4;border-radius:9px}
+.grid.list-view .cov .shr,.preview-row.list-view .cov .shr{top:5px;right:5px;width:28px;height:28px}
+.grid.list-view .cov .shr svg,.preview-row.list-view .cov .shr svg{width:14px;height:14px}
+.grid.list-view .bk h3,.preview-row.list-view .bk h3{flex:1}
+.grid.list-view .act,.preview-row.list-view .act{flex:0 0 150px;margin:0}
+.preview-group{margin-top:24px}
+.preview-group>.group-title{margin:0 0 10px}
+.preview-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.preview-row.list-view{grid-template-columns:1fr}
+body:not(.lv) .grid{display:block}
+.group-title{grid-column:1/-1;min-width:0;display:flex;align-items:center;gap:12px;margin-top:20px;padding:0 0 9px;border-bottom:1px solid #0b3b2a1c;color:var(--acc);font:700 1.4rem/1.5 'Anek Telugu','Noto Sans Telugu',sans-serif;overflow-wrap:anywhere}
+.group-title::before{content:"";width:4px;height:1.25em;flex:none;border-radius:4px;background:linear-gradient(180deg,#e8b52b,#c8921a)}
+.group-title::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,#c8921a55,transparent)}
+.bk{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:12px;display:flex;flex-direction:column;gap:12px;transition:transform .35s,box-shadow .35s;opacity:0;transform:translateY(24px)}
+.bk.in{opacity:1;transform:none}
+.bk:hover{transform:translateY(-6px);box-shadow:0 22px 34px -18px #04120f77}
+.cov{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;color:#fff;padding:0;display:flex;flex-direction:column;justify-content:space-between;box-shadow:inset 6px 0 10px -6px #0006}
+.cov img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cov svg{position:absolute;inset:0;width:100%;height:100%;opacity:.16}
+.cov .t{position:relative;font-family:'Anek Telugu';font-weight:800;font-size:1.35rem;line-height:1.4}
+.cov .c{position:relative;font:500 10px Outfit;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.bk h3{min-width:0;font-size:14px;font-weight:600;padding:0 4px;line-height:1.5;overflow-wrap:anywhere}
+.bk .cat{font-size:11.5px;color:var(--mut);padding:0 4px;margin-top:-10px}
+.pg{display:flex;align-items:center;gap:6px;font:500 11.5px Outfit;color:var(--mut);padding:0 4px;margin-top:-8px}.pg svg{width:13px;height:13px;color:var(--gold)}
+.act{display:flex;gap:8px;margin-top:auto}
+.dl{flex:1;display:inline-flex;justify-content:center;align-items:center;gap:6px;background:var(--acc);color:var(--bg);font:500 13px Outfit;border-radius:99px;padding:9px;transition:.25s}
+.dl:hover{background:var(--leaf);color:#fff}
+.empty{text-align:center;color:var(--mut);padding:50px 0;display:none}
+.qr{margin:30px 20px;border-radius:32px;background:#0b3b2a;color:#eef5ea;position:relative;overflow:hidden}
+.qr .in{max-width:1120px;margin:0 auto;padding:56px 28px;display:grid;gap:34px;grid-template-columns:1fr;align-items:center}
+@media(min-width:760px){.qr .in{grid-template-columns:1.2fr 1fr}}
+.qr h2{color:#d3ebc6}.qr .l.k{color:#e8b52b;letter-spacing:.3em;font-size:13px}
+.qr p{color:#ffffffbb;margin:12px 0 24px;font-size:15px}
+.qr .btns{display:flex;gap:10px;flex-wrap:wrap}
+.qr .dl{flex:none;padding:11px 28px;background:#e8b52b;color:#04120f}
+.qr .ghost{padding:11px 28px;border-radius:99px;border:1px solid #ffffff55;font:500 13px Outfit}
+.qr .cv{justify-self:center;width:min(230px,70%);height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:10px;background:#fff;box-shadow:0 30px 50px -20px #000a,0 0 0 1px #ffffff22;display:block;transform:rotate(3deg);transition:.4s;line-height:1.5}
+.qr .cv:hover{transform:rotate(0) scale(1.04)}
+footer{background:#04120f;color:#eef5ea;border-radius:32px 32px 0 0;margin-top:30px;padding:48px 0 24px;font-family:Outfit;font-size:14px}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px}
+.fg a{display:block;padding:3px 0;color:#ffffffcc;transition:.2s}.fg a:hover{color:#e8b52b}
+.fg h4{font-weight:500;color:#e8b52b;margin-bottom:8px}
+.cp{margin-top:34px;padding-top:18px;border-top:1px solid #ffffff2a;text-align:center;font-size:12px;color:#ffffff99}
+dialog{border:1px solid var(--line);border-radius:24px;background:var(--card);color:var(--fg);padding:24px;width:min(360px,92vw);margin:auto}
+dialog::backdrop{background:#04120f99;backdrop-filter:blur(4px)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);background:var(--acc);color:var(--bg);padding:10px 22px;border-radius:99px;font-size:13px;opacity:0;transition:.3s;pointer-events:none;z-index:60}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+body:not(.ready){overflow:hidden}
+#pre{position:fixed;inset:0;z-index:99;background:#04120f;display:grid;place-items:center;transition:transform .9s cubic-bezier(.77,0,.18,1),opacity .3s .7s}
+#pre.out{transform:translateY(-100%);opacity:0}
+#pre .lg{display:grid;justify-items:center;gap:26px}
+#pre svg{width:min(46vw,210px);height:auto;overflow:visible}
+#pre .fr{fill:#E7BB41;fill-opacity:0;stroke:#E7BB41;stroke-width:1.8;stroke-dasharray:1;stroke-dashoffset:1;animation:pdraw 1.5s cubic-bezier(.5,0,.2,1) .15s forwards,pfill .8s ease 1.3s forwards}
+#pre .t1,#pre .t2{fill:#E7BB41;opacity:0;transform:translateY(14px);animation:prise .8s cubic-bezier(.2,.8,.2,1) forwards}
+#pre .t1{animation-delay:1.5s}#pre .t2{animation-delay:1.75s}
+#pre .sh{transform:translateX(-220px);animation:pshine 1s ease-in-out 2.3s forwards}
+#pre .bar{width:min(46vw,210px);height:2px;background:#ffffff1f;overflow:hidden}
+#pre .bar i{display:block;height:100%;background:#E7BB41;transform-origin:left;transform:scaleX(0);animation:pbar 2.6s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes pdraw{to{stroke-dashoffset:0}}
+@keyframes pfill{to{fill-opacity:1;stroke-opacity:0}}
+@keyframes prise{to{opacity:1;transform:none}}
+@keyframes pshine{to{transform:translateX(500px)}}
+@keyframes pbar{to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){#pre .fr{animation:none;stroke-dashoffset:0;fill-opacity:1;stroke-opacity:0}#pre .t1,#pre .t2{animation:none;opacity:1;transform:none}#pre .sh,#pre .bar{display:none}}
+#sp{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,#2e9e5b,#e8b52b);transform:scaleX(0);transform-origin:left;z-index:50}
+.a{opacity:0;transform:translateY(34px)}
+body.ready .a{animation:up 1s cubic-bezier(.2,.8,.2,1) var(--d,0s) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.hero .wrap{position:relative;z-index:1}
+.ros svg,#prr svg{width:100%;height:100%;display:block}
+.mq{position:relative;z-index:2;overflow:hidden;margin-top:64px;border-block:1px solid #ffffff1f;padding:12px 0;background:#04120fcc;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.mqt{display:flex;width:max-content;animation:mq 45s linear infinite;font:300 14px Outfit;letter-spacing:.25em;color:#e8b52bcc;white-space:nowrap}
+.mqt span{padding-right:40px}
+@keyframes mq{to{transform:translateX(-50%)}}
+#lg{background:#e8b52b;color:#04120f;border-color:#e8b52b;font-weight:600}
+.search{min-width:0;max-width:540px;padding:6px 10px 6px 6px;gap:10px;box-shadow:0 10px 24px -16px #0b3b2a99;transition:.3s}
+.search:focus-within{border-color:var(--gold);box-shadow:0 0 0 4px #e8b52b33,0 14px 30px -14px #0b3b2a99}
+.si{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;background:linear-gradient(135deg,#0b3b2a,#2e9e5b);color:#fff;transition:.4s}
+.si svg{width:18px;height:18px}
+.search:focus-within .si{transform:scale(1.1) rotate(-14deg);background:linear-gradient(135deg,#e8b52b,#c8921a);color:#04120f}
+.clr{width:26px;height:26px;border-radius:50%;background:var(--line);font-size:11px;display:none;place-items:center}
+.search.has .clr{display:grid}
+.search kbd{font:500 11px Outfit;border:1px solid var(--line);border-radius:6px;padding:1px 8px;color:var(--mut)}
+.search.has kbd,.search:focus-within kbd{display:none}
+.dl{position:relative;overflow:hidden;isolation:isolate;gap:8px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 8px 16px -10px #0b3b2a}
+.dl::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#2e9e5b,#e8b52b);transform:scaleX(0);transform-origin:left}
+.dl::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;z-index:-1;background:linear-gradient(100deg,transparent,#ffffff66,transparent);transform:skewX(-20deg)}
+.dl:hover::after{animation:shine .8s}
+@keyframes shine{to{left:140%}}
+.dl .ic{display:grid;place-items:center;width:18px;height:18px}
+.dl .ic svg{width:16px;height:16px}
+.dl:hover .ic svg{animation:bob .8s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(3px)}}
+.dl.busy{pointer-events:none}
+.dl.busy::before{animation:fill 1s ease-in-out forwards}
+.dl.busy .ic svg{animation:fall .5s ease-in infinite}
+@keyframes fill{to{transform:scaleX(1)}}
+@keyframes fall{0%{transform:translateY(-9px);opacity:0}40%{opacity:1}100%{transform:translateY(8px);opacity:0}}
+.dl.done{background:var(--leaf);color:#fff}
+.dl.done .ic svg{animation:pop .5s}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.5)}}
+.shr{font:500 15px Outfit;background:#e8b52b;color:#04120f;padding:.65em 1em .65em .85em;display:flex;align-items:center;border:none;border-radius:16px;overflow:hidden;transition:all .2s;cursor:pointer;line-height:1.2}
+.shr .tx2{display:block;margin-left:.3em;transition:all .3s ease-in-out}
+.svg-wrapper,.svg-wrapper-1{display:block}
+.shr svg{display:block;width:20px;height:20px;transform-origin:center center;transition:transform .3s ease-in-out}
+.shr:hover .svg-wrapper{animation:fly-1 .6s ease-in-out infinite alternate}
+.shr:hover svg{transform:translateX(1.2em) rotate(45deg) scale(1.1)}
+.shr:hover .tx2{transform:translateX(5em)}
+.shr:active{transform:scale(.95)}
+@keyframes fly-1{from{transform:translateY(.1em)}to{transform:translateY(-.1em)}}
+.qr .shr{background:#d3ebc6}
+.cov .shr{position:absolute;top:10px;right:10px;z-index:2;width:40px;height:40px;padding:0;justify-content:center;border-radius:50%;border:1px solid #ffffffa6;background:#04120fcc;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;box-shadow:0 4px 14px #0005;transition:background .2s,border-color .2s,transform .2s,box-shadow .2s}
+.cov .shr:hover{background:#e8b52b;color:#04120f;border-color:#e8b52b;transform:translateY(-2px);box-shadow:0 8px 18px #0005}
+.cov .shr:hover .svg-wrapper{animation:none}
+.cov .shr svg{width:18px;height:18px}
+.cov .shr svg{position:static;width:18px;height:18px;opacity:1;transform:none}
+dialog{padding:0;overflow:hidden;border-radius:26px;box-shadow:0 40px 80px -20px #000a}
+dialog[open]{animation:sheet .45s cubic-bezier(.2,.9,.2,1)}
+@keyframes sheet{from{opacity:0;transform:translateY(40px) scale(.96)}}
+.sh1{display:flex;gap:14px;align-items:center;padding:22px 22px 12px}
+.mini{width:44px;height:60px;border-radius:6px;flex:none;box-shadow:0 8px 14px -6px #0006}
+.sh1 h3{font-size:1rem;margin:0;line-height:1.4}
+.lk{margin:0 22px;padding:9px 14px;border-radius:12px;background:var(--line);font-size:12px;color:var(--mut);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(68px,1fr));gap:8px;padding:16px 14px}
+.tiles a,.tiles button{display:flex;flex-direction:column;align-items:center;gap:6px;font:400 11.5px Outfit;color:var(--fg);padding:6px 0}
+.tiles i{width:50px;height:50px;border-radius:16px;display:grid;place-items:center;font-size:22px;font-style:normal;transition:.3s}
+.tiles a:hover i,.tiles button:hover i{transform:translateY(-4px) scale(1.08);box-shadow:0 12px 18px -8px #0008}
+.cl{display:block;width:100%;padding:14px;border-top:1px solid var(--line);font-size:13px;color:var(--mut)}
+.hero h1{font-size:clamp(2rem,9.5vw,6rem);line-height:1.4}
+.about{position:relative;z-index:1;background:#04120f;color:#fff;border-radius:32px 32px 0 0;margin-top:-34px;padding:64px 20px 100px;text-align:center}
+.about .in{max-width:760px;margin:0 auto}
+.about h2{font-size:clamp(1.9rem,5vw,3rem);font-weight:800;line-height:1.5;color:#d9f0c9}
+.orn{display:flex;align-items:center;justify-content:center;gap:12px;margin:16px 0 22px;color:#e8b52b}
+.orn span{height:1px;width:70px;background:#e8b52b66}
+.about p{text-align:justify;font-size:14.5px;line-height:2;color:#ffffffe6}
+@media(min-width:700px){.about p{font-size:17px}}
+.qt{position:relative;max-width:720px;border-radius:30px;padding:70px 38px 34px;text-align:center;color:#f4f1e6;background:radial-gradient(420px 220px at 50% 0,#e8b52b26,transparent 70%),linear-gradient(160deg,#124d37,#0a2a1f);border:1px solid #e8b52b55;box-shadow:0 40px 70px -30px #000,inset 0 0 0 6px #04120f,inset 0 0 0 7px #e8b52b33}
+.qt i{position:absolute;top:-34px;left:50%;transform:translateX(-50%);width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,#f1c94e,#c8921a);color:#04120f;display:grid;place-items:center;font:800 54px/1 Georgia,serif;padding-top:22px;box-shadow:0 0 0 7px #04120f,0 14px 30px -8px #e8b52b88}
+.qt .q{font-weight:600;font-size:clamp(1.2rem,3vw,1.85rem);line-height:1.85;color:#f4f1e6}
+.qt figcaption{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:26px;font:500 13px/1.4 Outfit;letter-spacing:.12em;color:#e8b52b}
+.qt .ln{height:1px;width:clamp(24px,8vw,60px);background:linear-gradient(90deg,transparent,#e8b52b)}.qt .ln:last-child{transform:scaleX(-1)}
+@media(max-width:600px){.qt{padding:62px 22px 28px}}
+.lib{z-index:2}
+.more{text-align:center;margin-top:34px}
+.more .dl{flex:none;padding:14px 32px;font:500 15px Outfit}
+.go svg{width:18px;height:18px;transition:transform .3s}.go:hover svg{transform:translateX(6px)}
+body:not(.lv) .tools{justify-content:flex-end}
+body:not(.lv) .search,body:not(.lv) .cat-picker{display:none}
+body:not(.lv) .view-toggle{margin-left:auto}
+body.lv .more,body.lv .about,body.lv .qr,body.lv .hero h1,body.lv .hero .sub,body.lv .hero .lead,body.lv .hero .cats,body.lv .mq,body.lv .ros{display:none}
+body.lv .hero{padding-bottom:64px}
+
+/* hero illustration + marquee placement */
+.hero{padding-bottom:78px}
+.ros{position:absolute;right:0;bottom:128px;z-index:0;width:clamp(300px,42vw,600px);aspect-ratio:600/420;pointer-events:none}
+.ros svg{overflow:visible}
+.ros .mn{animation:fl 7s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-8px)}}
+/* drawing animation */
+.ros .dr{stroke-dasharray:1 1;stroke-dashoffset:1;fill-opacity:0}
+body.ready .ros .dr{animation:draw 2s cubic-bezier(.5,0,.2,1) var(--d) forwards,fillin .9s ease calc(var(--d) + 1.7s) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fillin{to{fill-opacity:1}}
+.ros .hl,.ros .tw{opacity:0}
+body.ready .ros .hl{animation:fadein 2.2s ease 3.6s forwards}
+body.ready .ros .tw{animation:tw 3.2s ease-in-out 3s infinite,fadein 1s ease 2s forwards}
+@keyframes fadein{to{opacity:1}}
+@keyframes tw{50%{opacity:.15}}
+
+@media(max-width:1000px){.hero{display:flex;flex-direction:column}.hero .wrap{width:100%}.ros{position:relative;right:auto;bottom:auto;order:2;width:min(94vw,540px);margin:34px auto 0}.mq{order:3;margin-top:0}}
+@media(max-width:700px){.search kbd{display:none}}
+@media(min-width:601px) and (max-width:1023px){.logo img{width:58px}.preview-row:not(.list-view){grid-template-columns:repeat(2,minmax(0,240px));justify-content:center;gap:22px}}
+@media(max-width:600px){.logo img{width:48px}.preview-row:not(.list-view){grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.preview-row.list-view .bk{gap:10px;padding:8px}.preview-row.list-view .cov{width:56px}.preview-row.list-view .act{flex:0 0 100px}}
+@media(max-width:600px){.nl{gap:6px}.nl a,.nl button{padding:8px 11px 5px;font-size:12px}.nl a:nth-child(2),.logo span{display:none}.tools{align-items:stretch}.search{flex:1 1 100%;width:100%;max-width:none}.cat-picker{flex:1 1 auto}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid.list-view{grid-template-columns:1fr}.grid.list-view .bk{gap:10px;padding:8px}.grid.list-view .cov{width:56px}.grid.list-view .act{flex:0 0 100px}.view-toggle{align-self:center}.bk{padding:8px;border-radius:18px}.cov{padding:12px}.cov .t{font-size:1.05rem}.dl{font-size:12px;padding:9px 4px}.qr{margin:20px 12px}.qr .in{padding:40px 20px}.lib{padding-top:44px}.about{padding:52px 18px 90px}.about p{text-align:justify;text-align-last:left}}
+@media(max-width:320px){.nl a:nth-child(3){display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.a,.rv,.bk{opacity:1!important;transform:none!important}#pre{display:none}body:not(.ready){overflow:auto}.ros .dr{stroke-dashoffset:0!important;fill-opacity:1!important}.ros .hl,.ros .tw{opacity:1!important}}
+@media(prefers-reduced-motion:reduce){#pre{display:grid}#pre .fr{stroke-dashoffset:0;fill-opacity:1;stroke-opacity:0}#pre .t1,#pre .t2{opacity:1;transform:none}#pre .sh,#pre .bar{display:none}}
+.about .qt{margin-top:56px}
+</style>
+</head>
+<body>
+<div id="sp"></div>
+<div id="pre" role="status" aria-label="Loading"><div class="lg">
+<svg viewBox="0 0 482 565" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs><mask id="lm" maskUnits="userSpaceOnUse" x="0" y="0" width="482" height="565"><g fill="#fff"><path d="M240.967 564.949L236.876 554.131C228.034 530.75 208.382 512.774 184.308 506.044L96.0809 481.381C73.1429 474.968 58.523 453.525 60.1665 430.53C47.5458 434.507 33.8523 432.915 22.2588 425.859C8.32076 417.376 0 402.571 0 386.256V178.694C0 162.378 8.32076 147.573 22.2583 139.091C33.8528 132.034 47.5458 130.44 60.1665 134.42C58.523 111.424 73.1429 89.9804 96.0804 83.568L184.308 58.9058C208.382 52.1752 228.034 34.1988 236.876 10.8181L240.967 0L245.058 10.8181C253.901 34.1988 273.553 52.1758 297.627 58.9058L385.854 83.568C408.791 89.9804 423.411 111.424 421.768 134.42C434.387 130.44 448.083 132.034 459.676 139.091C473.613 147.573 481.935 162.378 481.935 178.694V386.256C481.935 402.571 473.613 417.376 459.676 425.859C448.082 432.915 434.388 434.508 421.768 430.529C423.411 453.525 408.791 474.968 385.854 481.381L297.627 506.044C273.553 512.773 253.901 530.75 245.058 554.131L240.967 564.949ZM72.107 415.283L69.9071 424.557C64.8643 445.815 77.3954 467.073 98.4363 472.955L186.663 497.618C210.163 504.187 229.869 520.402 240.967 541.862C252.066 520.402 271.773 504.187 295.271 497.618L383.498 472.955C404.539 467.073 417.07 445.815 412.028 424.558L409.828 415.284L418.294 419.663C430.051 425.745 443.822 425.266 455.127 418.385C466.436 411.504 473.186 399.493 473.186 386.256V178.694C473.186 165.457 466.436 153.446 455.127 146.564C443.819 139.682 430.049 139.205 418.294 145.286L409.828 149.665L412.028 140.391C417.07 119.134 404.539 97.8756 383.498 91.994L295.271 67.3307C271.773 60.7619 252.066 44.5465 240.967 23.087C229.869 44.5465 210.163 60.7614 186.664 67.3307L98.4357 91.994C77.3954 97.8756 64.8643 119.134 69.9071 140.391L72.107 149.665L63.641 145.286C51.8848 139.204 38.1149 139.681 26.8066 146.564C15.4994 153.446 8.74847 165.457 8.74847 178.694V386.256C8.74847 399.493 15.4994 411.504 26.8066 418.385C38.1149 425.267 51.8853 425.744 63.641 419.663L72.107 415.283Z"/><path d="M290.559 208.6C303.559 216.4 315.659 219.7 315.659 232C315.659 244.5 304.859 249.6 293.659 250C286.259 250.3 277.659 248 268.459 248.3H267.959C267.959 240.1 266.759 236.4 264.859 228.2H265.359C273.459 242.9 283.159 248 290.759 248C297.259 248 302.259 244.3 303.159 239.5C304.159 234.5 300.559 231.1 295.559 228.4C285.459 223 267.959 215.8 267.959 203.1C267.959 190.9 276.659 185.4 286.459 184.4C290.459 184 296.859 185.6 302.259 185.6C305.059 185.6 307.759 185.1 309.559 183.7H310.059C310.059 191.2 309.359 194.1 310.659 204.4H310.159C304.759 191 296.859 186.1 290.459 186.1C283.959 186.1 278.959 191.2 279.859 197.5C280.459 202.2 284.759 205.1 290.559 208.6Z"/><path d="M263.181 205.3C263.181 215.8 254.681 226 233.381 224.7L232.381 221.8C233.881 222.3 235.281 222.6 236.681 222.6C243.781 222.6 248.581 215.7 248.581 205.9C248.581 194.6 243.081 187 234.281 187C231.881 187 230.681 187.4 230.581 190.8C229.981 204.6 229.881 223.4 230.281 238.1C230.481 243.6 230.481 244.8 240.581 247.5V248C228.381 247.7 221.481 247.6 209.781 248V247.5C215.581 245 215.581 243.8 215.781 237.5C216.081 226.4 215.981 213 215.781 196.3C215.681 189.6 215.581 188.7 209.781 185.7V185.2C218.581 185.8 227.981 185.2 236.781 185.2C253.081 185.2 263.181 192.1 263.181 205.3Z"/><path d="M206.254 233.4L206.554 233.8C195.554 250.2 181.454 250 181.454 250C165.754 250 149.454 238.7 148.554 218C147.654 197.9 164.254 183.5 182.454 183.5C188.454 183.5 191.954 184.3 197.954 186C198.854 186.3 199.954 186.8 201.754 186.8C202.754 186.8 204.054 186.6 205.554 186.1L201.354 204.2H200.854C197.754 192.4 189.254 185.4 180.754 185.4C179.154 185.4 177.654 185.6 176.154 186.1C166.654 189.1 160.754 200.7 163.154 216.5C165.454 231.9 176.454 242.3 185.554 242.3C185.554 242.3 195.854 243.2 206.254 233.4Z"/><path d="M394.16 305.349C392.693 305.349 391.96 305.949 391.96 307.149V337.149C391.96 341.349 393.293 344.249 395.96 345.849C398.693 347.382 402.66 348.149 407.86 348.149C413.06 348.149 416.993 347.382 419.66 345.849C422.393 344.249 423.76 341.349 423.76 337.149V307.149C423.76 305.949 422.76 305.349 420.76 305.349V303.549H436.76V305.349C435.16 305.349 434.36 305.949 434.36 307.149V336.649C434.36 340.582 433.793 343.849 432.66 346.449C431.526 348.982 429.826 351.015 427.56 352.549C425.293 354.082 422.46 355.115 419.06 355.649C415.726 356.182 411.86 356.449 407.46 356.449C403.06 356.449 399.16 356.182 395.76 355.649C392.426 355.115 389.626 354.082 387.36 352.549C385.093 351.015 383.393 348.982 382.26 346.449C381.126 343.849 380.56 340.582 380.56 336.649V307.149C380.56 305.949 379.626 305.349 377.76 305.349V303.549H394.16V305.349Z"/><path d="M355.492 319.749L353.492 319.149C353.625 318.749 353.692 318.349 353.692 317.949C353.692 316.949 353.058 316.049 351.792 315.249C350.592 314.449 349.025 313.782 347.092 313.249C345.225 312.649 343.158 312.216 340.892 311.949C338.692 311.682 336.592 311.549 334.592 311.549C332.125 311.549 329.658 311.916 327.192 312.649C324.792 313.316 322.625 314.382 320.692 315.849C318.825 317.316 317.292 319.216 316.092 321.549C314.958 323.882 314.392 326.716 314.392 330.049C314.392 333.316 314.958 336.149 316.092 338.549C317.292 340.882 318.825 342.782 320.692 344.249C322.625 345.716 324.792 346.816 327.192 347.549C329.658 348.216 332.125 348.549 334.592 348.549C338.392 348.549 341.792 348.249 344.792 347.649C347.858 346.982 350.458 346.282 352.592 345.549V336.949H339.792C338.858 336.949 338.158 337.149 337.692 337.549C337.225 337.949 336.925 338.816 336.792 340.149H334.992V327.349H336.792C336.925 328.482 337.225 329.216 337.692 329.549C338.158 329.816 338.858 329.949 339.792 329.949H364.792V331.749C363.458 331.949 362.625 332.182 362.292 332.449C361.958 332.716 361.792 333.282 361.792 334.149V345.449C361.792 346.116 361.992 346.549 362.392 346.749C362.792 346.949 363.258 347.182 363.792 347.449V349.049C361.592 350.582 359.258 351.849 356.792 352.849C354.392 353.849 351.925 354.649 349.392 355.249C346.925 355.782 344.425 356.116 341.892 356.249C339.425 356.382 336.992 356.449 334.592 356.449C329.925 356.449 325.658 355.882 321.792 354.749C317.992 353.549 314.725 351.816 311.992 349.549C309.258 347.216 307.125 344.416 305.592 341.149C304.125 337.816 303.392 334.049 303.392 329.849C303.392 325.649 304.125 321.916 305.592 318.649C307.125 315.316 309.258 312.482 311.992 310.149C314.725 307.816 317.992 306.049 321.792 304.849C325.658 303.582 329.925 302.949 334.592 302.949C337.525 302.949 340.325 303.149 342.992 303.549C345.658 303.949 348.025 304.416 350.092 304.949C352.158 305.416 353.858 305.882 355.192 306.349C356.592 306.749 357.458 306.949 357.792 306.949C358.392 306.949 358.858 306.816 359.192 306.549C359.525 306.282 359.858 306.049 360.192 305.849L361.392 306.549L355.492 319.749Z"/><path d="M249.824 305.349C248.357 305.349 247.624 305.949 247.624 307.149V337.149C247.624 341.349 248.957 344.249 251.624 345.849C254.357 347.382 258.324 348.149 263.524 348.149C268.724 348.149 272.657 347.382 275.324 345.849C278.057 344.249 279.424 341.349 279.424 337.149V307.149C279.424 305.949 278.424 305.349 276.424 305.349V303.549H292.424V305.349C290.824 305.349 290.024 305.949 290.024 307.149V336.649C290.024 340.582 289.457 343.849 288.324 346.449C287.19 348.982 285.49 351.015 283.224 352.549C280.957 354.082 278.124 355.115 274.724 355.649C271.39 356.182 267.524 356.449 263.124 356.449C258.724 356.449 254.824 356.182 251.424 355.649C248.09 355.115 245.29 354.082 243.024 352.549C240.757 351.015 239.057 348.982 237.924 346.449C236.79 343.849 236.224 340.582 236.224 336.649V307.149C236.224 305.949 235.29 305.349 233.424 305.349V303.549H249.824V305.349Z"/><path d="M223.091 358.049C223.091 357.049 222.757 356.482 222.091 356.349C221.491 356.215 220.691 356.149 219.691 356.149H172.091V354.349C174.091 354.349 175.091 353.749 175.091 352.549V307.149C175.091 305.949 174.091 305.349 172.091 305.349V303.549H189.291V305.349C187.424 305.349 186.491 305.949 186.491 307.149V346.949H219.691C220.691 346.949 221.491 346.715 222.091 346.249C222.757 345.782 223.091 345.149 223.091 344.349H224.891V358.049H223.091Z"/><path d="M156.992 314.349C156.992 313.615 156.692 313.082 156.092 312.749C155.558 312.349 154.592 312.149 153.192 312.149H120.792V324.549H140.392C141.725 324.549 142.758 324.382 143.492 324.049C144.225 323.649 144.592 322.682 144.592 321.149H146.392V336.749H144.592C144.592 335.215 144.225 334.249 143.492 333.849C142.758 333.382 141.725 333.149 140.392 333.149H120.792V346.949H154.192C155.192 346.949 155.992 346.715 156.592 346.249C157.258 345.782 157.592 345.149 157.592 344.349H159.392V358.049H157.592C157.592 357.049 157.258 356.482 156.592 356.349C155.992 356.215 155.192 356.149 154.192 356.149H107.592V354.349C108.058 354.349 108.458 354.215 108.792 353.949C109.192 353.615 109.392 353.149 109.392 352.549V307.149C109.392 306.549 109.192 306.115 108.792 305.849C108.458 305.515 108.058 305.349 107.592 305.349V303.549H153.192C154.592 303.549 155.558 303.349 156.092 302.949C156.692 302.482 156.992 301.882 156.992 301.149H158.792V314.349H156.992Z"/><path d="M74.0588 352.549C74.0588 353.749 74.7921 354.349 76.2588 354.349V356.149H60.8588V354.349C61.3255 354.349 61.7255 354.215 62.0588 353.949C62.4588 353.615 62.6588 353.149 62.6588 352.549V312.749H46.1588C45.5588 312.749 44.9588 312.915 44.3588 313.249C43.8255 313.582 43.5588 314.215 43.5588 315.149H41.7588V301.149H43.5588C43.5588 302.082 43.8255 302.715 44.3588 303.049C44.9588 303.382 45.5588 303.549 46.1588 303.549H90.5588C91.1588 303.549 91.7255 303.382 92.2588 303.049C92.8588 302.715 93.1588 302.082 93.1588 301.149H94.9588V315.149H93.1588C93.1588 314.215 92.8588 313.582 92.2588 313.249C91.7255 312.915 91.1588 312.749 90.5588 312.749H74.0588V352.549Z"/></g></mask><linearGradient id="lgr" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><path class="fr" pathLength="1" d="M240.967 564.949L236.876 554.131C228.034 530.75 208.382 512.774 184.308 506.044L96.0809 481.381C73.1429 474.968 58.523 453.525 60.1665 430.53C47.5458 434.507 33.8523 432.915 22.2588 425.859C8.32076 417.376 0 402.571 0 386.256V178.694C0 162.378 8.32076 147.573 22.2583 139.091C33.8528 132.034 47.5458 130.44 60.1665 134.42C58.523 111.424 73.1429 89.9804 96.0804 83.568L184.308 58.9058C208.382 52.1752 228.034 34.1988 236.876 10.8181L240.967 0L245.058 10.8181C253.901 34.1988 273.553 52.1758 297.627 58.9058L385.854 83.568C408.791 89.9804 423.411 111.424 421.768 134.42C434.387 130.44 448.083 132.034 459.676 139.091C473.613 147.573 481.935 162.378 481.935 178.694V386.256C481.935 402.571 473.613 417.376 459.676 425.859C448.082 432.915 434.388 434.508 421.768 430.529C423.411 453.525 408.791 474.968 385.854 481.381L297.627 506.044C273.553 512.773 253.901 530.75 245.058 554.131L240.967 564.949ZM72.107 415.283L69.9071 424.557C64.8643 445.815 77.3954 467.073 98.4363 472.955L186.663 497.618C210.163 504.187 229.869 520.402 240.967 541.862C252.066 520.402 271.773 504.187 295.271 497.618L383.498 472.955C404.539 467.073 417.07 445.815 412.028 424.558L409.828 415.284L418.294 419.663C430.051 425.745 443.822 425.266 455.127 418.385C466.436 411.504 473.186 399.493 473.186 386.256V178.694C473.186 165.457 466.436 153.446 455.127 146.564C443.819 139.682 430.049 139.205 418.294 145.286L409.828 149.665L412.028 140.391C417.07 119.134 404.539 97.8756 383.498 91.994L295.271 67.3307C271.773 60.7619 252.066 44.5465 240.967 23.087C229.869 44.5465 210.163 60.7614 186.664 67.3307L98.4357 91.994C77.3954 97.8756 64.8643 119.134 69.9071 140.391L72.107 149.665L63.641 145.286C51.8848 139.204 38.1149 139.681 26.8066 146.564C15.4994 153.446 8.74847 165.457 8.74847 178.694V386.256C8.74847 399.493 15.4994 411.504 26.8066 418.385C38.1149 425.267 51.8853 425.744 63.641 419.663L72.107 415.283Z"/><g class="t1"><path d="M290.559 208.6C303.559 216.4 315.659 219.7 315.659 232C315.659 244.5 304.859 249.6 293.659 250C286.259 250.3 277.659 248 268.459 248.3H267.959C267.959 240.1 266.759 236.4 264.859 228.2H265.359C273.459 242.9 283.159 248 290.759 248C297.259 248 302.259 244.3 303.159 239.5C304.159 234.5 300.559 231.1 295.559 228.4C285.459 223 267.959 215.8 267.959 203.1C267.959 190.9 276.659 185.4 286.459 184.4C290.459 184 296.859 185.6 302.259 185.6C305.059 185.6 307.759 185.1 309.559 183.7H310.059C310.059 191.2 309.359 194.1 310.659 204.4H310.159C304.759 191 296.859 186.1 290.459 186.1C283.959 186.1 278.959 191.2 279.859 197.5C280.459 202.2 284.759 205.1 290.559 208.6Z"/><path d="M263.181 205.3C263.181 215.8 254.681 226 233.381 224.7L232.381 221.8C233.881 222.3 235.281 222.6 236.681 222.6C243.781 222.6 248.581 215.7 248.581 205.9C248.581 194.6 243.081 187 234.281 187C231.881 187 230.681 187.4 230.581 190.8C229.981 204.6 229.881 223.4 230.281 238.1C230.481 243.6 230.481 244.8 240.581 247.5V248C228.381 247.7 221.481 247.6 209.781 248V247.5C215.581 245 215.581 243.8 215.781 237.5C216.081 226.4 215.981 213 215.781 196.3C215.681 189.6 215.581 188.7 209.781 185.7V185.2C218.581 185.8 227.981 185.2 236.781 185.2C253.081 185.2 263.181 192.1 263.181 205.3Z"/><path d="M206.254 233.4L206.554 233.8C195.554 250.2 181.454 250 181.454 250C165.754 250 149.454 238.7 148.554 218C147.654 197.9 164.254 183.5 182.454 183.5C188.454 183.5 191.954 184.3 197.954 186C198.854 186.3 199.954 186.8 201.754 186.8C202.754 186.8 204.054 186.6 205.554 186.1L201.354 204.2H200.854C197.754 192.4 189.254 185.4 180.754 185.4C179.154 185.4 177.654 185.6 176.154 186.1C166.654 189.1 160.754 200.7 163.154 216.5C165.454 231.9 176.454 242.3 185.554 242.3C185.554 242.3 195.854 243.2 206.254 233.4Z"/></g><g class="t2"><path d="M394.16 305.349C392.693 305.349 391.96 305.949 391.96 307.149V337.149C391.96 341.349 393.293 344.249 395.96 345.849C398.693 347.382 402.66 348.149 407.86 348.149C413.06 348.149 416.993 347.382 419.66 345.849C422.393 344.249 423.76 341.349 423.76 337.149V307.149C423.76 305.949 422.76 305.349 420.76 305.349V303.549H436.76V305.349C435.16 305.349 434.36 305.949 434.36 307.149V336.649C434.36 340.582 433.793 343.849 432.66 346.449C431.526 348.982 429.826 351.015 427.56 352.549C425.293 354.082 422.46 355.115 419.06 355.649C415.726 356.182 411.86 356.449 407.46 356.449C403.06 356.449 399.16 356.182 395.76 355.649C392.426 355.115 389.626 354.082 387.36 352.549C385.093 351.015 383.393 348.982 382.26 346.449C381.126 343.849 380.56 340.582 380.56 336.649V307.149C380.56 305.949 379.626 305.349 377.76 305.349V303.549H394.16V305.349Z"/><path d="M355.492 319.749L353.492 319.149C353.625 318.749 353.692 318.349 353.692 317.949C353.692 316.949 353.058 316.049 351.792 315.249C350.592 314.449 349.025 313.782 347.092 313.249C345.225 312.649 343.158 312.216 340.892 311.949C338.692 311.682 336.592 311.549 334.592 311.549C332.125 311.549 329.658 311.916 327.192 312.649C324.792 313.316 322.625 314.382 320.692 315.849C318.825 317.316 317.292 319.216 316.092 321.549C314.958 323.882 314.392 326.716 314.392 330.049C314.392 333.316 314.958 336.149 316.092 338.549C317.292 340.882 318.825 342.782 320.692 344.249C322.625 345.716 324.792 346.816 327.192 347.549C329.658 348.216 332.125 348.549 334.592 348.549C338.392 348.549 341.792 348.249 344.792 347.649C347.858 346.982 350.458 346.282 352.592 345.549V336.949H339.792C338.858 336.949 338.158 337.149 337.692 337.549C337.225 337.949 336.925 338.816 336.792 340.149H334.992V327.349H336.792C336.925 328.482 337.225 329.216 337.692 329.549C338.158 329.816 338.858 329.949 339.792 329.949H364.792V331.749C363.458 331.949 362.625 332.182 362.292 332.449C361.958 332.716 361.792 333.282 361.792 334.149V345.449C361.792 346.116 361.992 346.549 362.392 346.749C362.792 346.949 363.258 347.182 363.792 347.449V349.049C361.592 350.582 359.258 351.849 356.792 352.849C354.392 353.849 351.925 354.649 349.392 355.249C346.925 355.782 344.425 356.116 341.892 356.249C339.425 356.382 336.992 356.449 334.592 356.449C329.925 356.449 325.658 355.882 321.792 354.749C317.992 353.549 314.725 351.816 311.992 349.549C309.258 347.216 307.125 344.416 305.592 341.149C304.125 337.816 303.392 334.049 303.392 329.849C303.392 325.649 304.125 321.916 305.592 318.649C307.125 315.316 309.258 312.482 311.992 310.149C314.725 307.816 317.992 306.049 321.792 304.849C325.658 303.582 329.925 302.949 334.592 302.949C337.525 302.949 340.325 303.149 342.992 303.549C345.658 303.949 348.025 304.416 350.092 304.949C352.158 305.416 353.858 305.882 355.192 306.349C356.592 306.749 357.458 306.949 357.792 306.949C358.392 306.949 358.858 306.816 359.192 306.549C359.525 306.282 359.858 306.049 360.192 305.849L361.392 306.549L355.492 319.749Z"/><path d="M249.824 305.349C248.357 305.349 247.624 305.949 247.624 307.149V337.149C247.624 341.349 248.957 344.249 251.624 345.849C254.357 347.382 258.324 348.149 263.524 348.149C268.724 348.149 272.657 347.382 275.324 345.849C278.057 344.249 279.424 341.349 279.424 337.149V307.149C279.424 305.949 278.424 305.349 276.424 305.349V303.549H292.424V305.349C290.824 305.349 290.024 305.949 290.024 307.149V336.649C290.024 340.582 289.457 343.849 288.324 346.449C287.19 348.982 285.49 351.015 283.224 352.549C280.957 354.082 278.124 355.115 274.724 355.649C271.39 356.182 267.524 356.449 263.124 356.449C258.724 356.449 254.824 356.182 251.424 355.649C248.09 355.115 245.29 354.082 243.024 352.549C240.757 351.015 239.057 348.982 237.924 346.449C236.79 343.849 236.224 340.582 236.224 336.649V307.149C236.224 305.949 235.29 305.349 233.424 305.349V303.549H249.824V305.349Z"/><path d="M223.091 358.049C223.091 357.049 222.757 356.482 222.091 356.349C221.491 356.215 220.691 356.149 219.691 356.149H172.091V354.349C174.091 354.349 175.091 353.749 175.091 352.549V307.149C175.091 305.949 174.091 305.349 172.091 305.349V303.549H189.291V305.349C187.424 305.349 186.491 305.949 186.491 307.149V346.949H219.691C220.691 346.949 221.491 346.715 222.091 346.249C222.757 345.782 223.091 345.149 223.091 344.349H224.891V358.049H223.091Z"/><path d="M156.992 314.349C156.992 313.615 156.692 313.082 156.092 312.749C155.558 312.349 154.592 312.149 153.192 312.149H120.792V324.549H140.392C141.725 324.549 142.758 324.382 143.492 324.049C144.225 323.649 144.592 322.682 144.592 321.149H146.392V336.749H144.592C144.592 335.215 144.225 334.249 143.492 333.849C142.758 333.382 141.725 333.149 140.392 333.149H120.792V346.949H154.192C155.192 346.949 155.992 346.715 156.592 346.249C157.258 345.782 157.592 345.149 157.592 344.349H159.392V358.049H157.592C157.592 357.049 157.258 356.482 156.592 356.349C155.992 356.215 155.192 356.149 154.192 356.149H107.592V354.349C108.058 354.349 108.458 354.215 108.792 353.949C109.192 353.615 109.392 353.149 109.392 352.549V307.149C109.392 306.549 109.192 306.115 108.792 305.849C108.458 305.515 108.058 305.349 107.592 305.349V303.549H153.192C154.592 303.549 155.558 303.349 156.092 302.949C156.692 302.482 156.992 301.882 156.992 301.149H158.792V314.349H156.992Z"/><path d="M74.0588 352.549C74.0588 353.749 74.7921 354.349 76.2588 354.349V356.149H60.8588V354.349C61.3255 354.349 61.7255 354.215 62.0588 353.949C62.4588 353.615 62.6588 353.149 62.6588 352.549V312.749H46.1588C45.5588 312.749 44.9588 312.915 44.3588 313.249C43.8255 313.582 43.5588 314.215 43.5588 315.149H41.7588V301.149H43.5588C43.5588 302.082 43.8255 302.715 44.3588 303.049C44.9588 303.382 45.5588 303.549 46.1588 303.549H90.5588C91.1588 303.549 91.7255 303.382 92.2588 303.049C92.8588 302.715 93.1588 302.082 93.1588 301.149H94.9588V315.149H93.1588C93.1588 314.215 92.8588 313.582 92.2588 313.249C91.7255 312.915 91.1588 312.749 90.5588 312.749H74.0588V352.549Z"/></g><g mask="url(#lm)"><rect class="sh" x="0" y="0" width="200" height="565" fill="url(#lgr)"/></g></svg><div class="bar"><i></i></div></div></div>
+<header class="hero">
+  <div class="ros" id="ros" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="a">
+      <a class="logo" href="#/" aria-label="CPS Telugu home"><img src="CPS%20Telgu%20Logo%20%20Yellow.svg" alt="CPS Telugu"></a>
+      <div class="nl"><a href="#/library" data-en="Library">గ్రంథాలయం</a><a href="#quran" data-en="Quran">ఖురాన్</a><a href="#contact" data-en="Contact">సంప్రదించండి</a><button id="lg" aria-label="Translate">🌐 EN</button></div>
+    </nav>
+    <h1 class="h a" style="--d:.25s" data-en="<em>CPS</em> Telugu"><em>సీపీఎస్</em> తెలుగు</h1>
+    <div class="sub a" style="--d:.4s">CPS TELUGU · LIBRARY</div>
+    <p class="lead a" style="--d:.5s" data-en="Islamic books on peace and spirituality – read them free, download them and share them with your loved ones.">శాంతి మరియు ఆధ్యాత్మికత గురించిన ఇస్లామీయ గ్రంథాలు – ఉచితంగా చదవండి, డౌన్‌లోడ్ చేయండి, మీ ప్రియమైన వారితో పంచుకోండి.</p>
+    <a class="hero-cta a" style="--d:.58s" href="#/library"><span data-en="Go to Library">గ్రంథాలయానికి వెళ్లండి</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    <div class="cats a" style="--d:.65s"><div class="k"><i></i><span data-en="Categories">వర్గాలు</span></div><div class="cw h" id="cw"></div><div class="m"><span id="cn" class="l"></span><span class="pb"><i id="cb"></i></span></div></div>
+  </div>
+<div class="mq"><div class="mqt" id="mq"></div></div>
+</header>
+
+<main>
+<section class="about" id="about"><div class="in">
+<h2 class="h rv" data-en="About CPS Telugu">సీపీఎస్ తెలుగు గురించి</h2>
+<div class="orn" aria-hidden="true"><span></span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.2 6.3L20.5 5l-2.300 6.300L24 12l-5.800.7L20.5 19l-6.300-2.300L12 23l-2.200-6.300L3.500 19l2.300-6.300L0 12l5.800-.7L3.500 5l6.300 2.300z"/></svg><span></span></div>
+<p class="rv" data-en="Maulana Wahiduddin Khan devoted his life to studying the Quran, the true source of Islam, and the Sunnah, the way of life of Prophet Muhammad, along with contemporary issues. His scholarly Islamic studies and his engagement with modern scientific research made him realise that the time had come to present Islamic teachings in the style and vocabulary of the coming scientific age. Since then he has been explaining Islam in modern language. Engaging with the thinking of truth-seekers, he presents the concept of one God, the reality of life after death and God's creation plan on the basis of rational arguments. Clearing away misconceptions about Islam, he shows its true face, rooted purely in peace and spirituality. To help people set their thinking right so that they walk positive paths, to spread a peaceful spiritual outlook and to create platforms for interfaith harmony, Maulana founded an organisation named CPS-International (International Centre for Peace and Spirituality).">మౌలానా వహీదుద్దీన్ ఖాన్ గారు, ఇస్లాం ధర్మానికి వాస్తవ మూలమైన ఖురాన్ మరియు ప్రవక్త ముహమ్మద్ వారి జీవనవిధానమైన సున్నత్‌తో పాటు సమకాలీన అంశాలపై కూడా అధ్యయనం చేయటానికి తన జీవితాన్నే అంకితం చేసేశారు. శాస్త్రీయ ఇస్లామీయ అధ్యయనం మరియు ఆధునిక విజ్ఞానశాస్త్రాల పరిశోధనలు మౌలానా వారిని ఇస్లామీయ బోధనలను రాబోయే శాస్త్రీయ యుగపు శైలి మరియు పరిభాషలో ప్రజలముందు పెట్టవలసిన సమయం ఆసన్నమైందనే వాస్తవాన్ని గ్రహించేలా చేశాయి. అప్పటినుండి మౌలానాగారు ఇస్లాంను ఆధునిక భాషలో చెప్పటం ప్రారంభించారు. సత్యాన్వేషకుల ఆలోచనలతో సంభాషిస్తూ, ఏకేశ్వరోపాసనా సిద్ధాంతాన్ని, మరణానంతర జీవిత వాస్తవికతను మరియు దేవుని సృష్టి ప్రణాళికను శాస్త్రీయ వాదనల ఆధారంగా మౌలానాగారు ప్రజలముందు ఉంచుతున్నారు. ఇస్లాంపైవున్న అపోహలను దూరం చేస్తూ, కేవలం శాంతి, ఆధ్యాత్మికతల ఆధారంగా ఇస్లాం వాస్తవ స్వరూపాన్ని ప్రజలకు చూపిస్తున్నారు. వ్యక్తులు అనుకూల మార్గాలపై నడవటానికి వారి ఆలోచనలను సరిచేయటం కోసం, శాంతియుత ఆధ్యాత్మిక సిద్ధాంతాన్ని వ్యాపింపచేయటం కోసం మరియు మత సామరస్య వేదికలను ఏర్పాటు చేయటం కోసం, మౌలానాగారు CPS-International (శాంతి మరియు ఆధ్యాత్మికతల అంతర్జాతీయ కేంద్రం) అనే పేరుతో ఒక సంస్థను స్థాపించారు.</p>
+<figure class="qt rv"><i aria-hidden="true">“</i><blockquote class="q h" data-en="Thinking positively and striving for peace in the world is the way to reach God.">సానుకూలంగా ఆలోచించడం మరియు ప్రపంచంలో శాంతి కోసం కృషి చేయడమే దైవాన్ని చేరే మార్గం</blockquote><figcaption><span class="ln"></span><span data-en="Maulana Wahiduddin Khan">మౌలానా వహీదుద్దీన్ ఖాన్</span><span class="ln"></span></figcaption></figure>
+</div></section>
+<section class="lib" id="library">
+  <div class="wrap">
+    <h2 class="h rv" data-en="Telugu Books">తెలుగు పుస్తకాలు</h2>
+    <div class="tools rv"><label class="search" id="sb"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span><input id="q" type="text" autocomplete="off" aria-label="Search"><button type="button" class="clr" id="clr" aria-label="Clear">✕</button><kbd>/</kbd></label><div class="cat-picker" id="catPicker"><button class="cat-trigger" id="catTrigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="catMenu"><span class="cat-trigger-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"/><path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20M8 7h8M8 10h6"/></svg></span><span class="cat-trigger-copy"><span class="cat-trigger-label" data-en="Browse category">వర్గాన్ని ఎంచుకోండి</span><span class="cat-trigger-value" id="catValue"></span></span><span class="cat-count" id="catCount"></span><svg class="cat-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="cat-menu" id="catMenu" role="listbox" aria-label="Categories" hidden></div></div><div class="view-toggle" role="group" aria-label="Book layout"><button class="view-button" type="button" data-view="grid" aria-label="Grid view" title="Grid view" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></button><button class="view-button" type="button" data-view="list" aria-label="List view" title="List view" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg></button></div></div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" data-en="No books found">పుస్తకాలు కనబడలేదు · No books found</p>
+    <div class="more rv"><a class="dl go" href="#/library"><span data-en="Go to Library">గ్రంథాలయానికి వెళ్లండి</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-5-5l5 5-5 5"/></svg></a></div>
+  </div>
+</section>
+
+<section class="qr rv" id="quran">
+  <div class="in">
+    <div><div class="l k">TELUGU QURAN</div><h2 class="h" data-en="Telugu Quran">తెలుగు ఖురాన్</h2>
+    <p data-en="The holy Quran in Telugu – easy to read, anywhere on your phone.">పవిత్ర ఖురాన్ తెలుగు అనువాదం – చదవడానికి సులభం, ఎక్కడైనా మీ ఫోన్‌లో.</p>
+    <div class="btns"><a class="dl" data-dl href="https://drive.google.com/drive/folders/1M9yC-pgVnbqLynnDpEygyqHO0TIhH3Yp" target="_blank" rel="noopener"><span class="ic"></span><span class="tx" data-en="Download">డౌన్‌లోడ్</span></a><button class="shr" data-share="-1"><span class="svg-wrapper-1"><span class="svg-wrapper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path></svg></span></span><span class="tx2" data-en="Share">షేర్</span></button><a class="ghost" href="https://wa.me/919845576070" target="_blank" rel="noopener" data-en="Free Order">ఉచిత ఆర్డర్</a></div></div>
+    <img class="cv" src="Telugu%20Translation%20image.jpg" alt="తెలుగు అనువాద ఖురాన్ ముఖచిత్రం" loading="lazy">
+  </div>
+</section>
+</main>
+
+<footer id="contact"><div class="wrap">
+  <div class="fg rv">
+    <div><h4>Explore</h4><a href="#/library">Library</a><a href="#quran">Telugu Quran</a><a href="#">CPS Global</a><a href="#">Spirit Of Islam</a></div>
+    <div><h4>Reach us</h4><a href="tel:+919845576070">Call Us</a><a href="https://wa.me/919845576070">WhatsApp Us</a><a href="mailto:info@example.com">Email Us</a></div>
+    <div><h4>Contact Info</h4><span style="color:#ffffffbb;line-height:1.9">Bengaluru, Karnataka<br>+91 9845576070<br>9035719663 · 8050209492</span></div>
+  </div>
+  <div class="cp">Designed with 🤍 by Md Abullais</div>
+</div></footer>
+
+<dialog id="sd"><div class="sh1"><div class="mini" id="sm"></div><div><div class="l" style="font-size:11px;letter-spacing:.2em;color:var(--mut)" data-en="SHARE">షేర్ చేయండి</div><h3 class="h" id="st"></h3></div></div><div class="lk l" id="lk"></div><div class="tiles" id="so"></div><button class="cl l" onclick="sd.close()" data-en="Close">మూసివేయి</button></dialog>
+<div class="toast l" id="toast"></div>
+
+<script>
+var DRIVE="https://drive.google.com/drive/folders/1M9yC-pgVnbqLynnDpEygyqHO0TIhH3Yp",L="te",cat=-1;
+var CATS=[];
+var COL=["#1f5c8a","#0f3d4a","#7a2e3b","#2e7d5b","#5a3a1f","#6b4c9a","#2d6a4f","#854d0e","#4338ca"];
+
+var BOOKS=[];
+var viewMode="grid";
+
+var SV='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">';
+var ARROW=SV+'<path d="M12 4v11m0 0l-5-5m5 5l5-5M5 20h14"/></svg>',CHECK=SV+'<path d="M5 12.5l4.5 4.5L19 7"/></svg>';
+var SHARE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/></svg>';
+var PGI='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg>';
+var STAR='<svg viewBox="0 0 60 60"><path d="M30 4l6 14 14-6-6 14 14 6-14 6 6 14-14-6-6 14-6-14-14 6 6-14-14-6 14-6-6-14 14 6z" fill="none" stroke="#fff" stroke-width="1.2"/></svg>';
+var BOOKICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"/><path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20M8 7h8M8 10h6"/></svg>';
+
+var LV=false,previewBookLimit=innerWidth>=1024?4:2;
+var $=function(i){return document.getElementById(i)},grid=$("grid"),sd=$("sd");
+function T(a,b){return L==="te"?a:b}
+function categoryName(category){var match=category.match(/^(?:\d+\.\s*)?([^()]*)\s*\(([^()]*)\)$/);return match?(L==="te"?match[2]:match[1].trim()):category}
+function esc(value){return String(value).replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]})}
+function art(){
+ var n=0,S=function(t,a){return '<'+t+' class="dr" pathLength="1" style="--d:'+(.2+n++*.22).toFixed(2)+'s" '+a+'/>'};
+ var F='fill="#0a2a1f" stroke="#e8b52b" stroke-opacity=".7" stroke-width="1.4"';
+ var P=[[70,60],[140,30],[480,50],[550,130],[40,180],[575,230],[210,100],[420,20]],st="";
+ P.forEach(function(p,i){st+='<circle class="tw" style="animation-delay:'+(3+i*.45)+'s,'+(2+i*.15)+'s" cx="'+p[0]+'" cy="'+p[1]+'" r="2.2" fill="#fff"/>'});
+ var arcs=
+  S('path','d="M120 420V190C120 110 220 70 300 0C380 70 480 110 480 190V420" fill="none" stroke="#e8b52b" stroke-width="2" opacity=".8"')+
+  S('path','d="M148 420V195C148 125 228 92 300 24C372 92 452 125 452 195V420" fill="none" stroke="#e8b52b" stroke-width="1.6" opacity=".6"')+
+  S('path','d="M176 420V200C176 140 236 112 300 48C364 112 424 140 424 200V420" fill="url(#pt)" stroke="#e8b52b" stroke-width="1.2" opacity=".4"');
+ var m=
+  S('rect','x="0" y="410" width="600" height="10" '+F)+
+  S('path','d="M215 420V345a85 85 0 0 1 170 0V420z" '+F)+
+  S('path','d="M150 420V385a45 45 0 0 1 90 0V420z" '+F)+
+  S('path','d="M360 420V385a45 45 0 0 1 90 0V420z" '+F)+
+  S('rect','x="120" y="215" width="26" height="205" '+F)+
+  S('rect','x="454" y="215" width="26" height="205" '+F)+
+  S('path','d="M116 215l17-48 17 48z" '+F)+
+  S('path','d="M450 215l17-48 17 48z" '+F)+
+  S('rect','x="113" y="252" width="40" height="7" '+F)+
+  S('rect','x="447" y="252" width="40" height="7" '+F)+
+  S('path','d="M300 260V234" fill="none" stroke="#e8b52b" stroke-width="1.5"')+
+  S('path','d="M133 167v-18M467 167v-18" fill="none" stroke="#e8b52b" stroke-width="1.5"')+
+  S('circle','cx="300" cy="231" r="3.5" fill="#e8b52b" stroke="#e8b52b"')+
+  S('path','d="M282 420V388a18 18 0 0 1 36 0V420z" fill="#e8b52b" stroke="#e8b52b" stroke-width="1"');
+ var C='M300.5 67A58 58 0 1 0 350.5 153.6A50 50 0 0 1 300.5 67z';
+ var moon='<g class="mn"><circle class="hl" cx="300" cy="125" r="105" fill="url(#rg)"/>'+
+  '<path class="hl" d="'+C+'" fill="#e8b52b" filter="url(#bl)" style="mix-blend-mode:normal" opacity=".55"/>'+
+  S('path','d="'+C+'" fill="#e8b52b" stroke="#ffe08a" stroke-width="1.2"')+
+  '<path class="tw" d="M352 112l5 12 12 5-12 5-5 12-5-12-12-5 12-5z" fill="#fff"/></g>';
+ return '<svg viewBox="0 0 600 420"><defs>'+
+  '<pattern id="pt" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M20 3l4 9 9-4-4 9 9 4-9 4 4 9-9-4-4 9-4-9-9 4 4-9-9-4 4-9-9-4 9-4-4-9 9 4z" fill="none" stroke="#e8b52b" stroke-width=".8" opacity=".35"/></pattern>'+
+  '<radialGradient id="rg"><stop offset="0" stop-color="#e8b52b" stop-opacity=".28"/><stop offset="1" stop-color="#e8b52b" stop-opacity="0"/></radialGradient>'+
+  '<filter id="bl" filterUnits="userSpaceOnUse" x="200" y="20" width="220" height="210"><feGaussianBlur stdDeviation="9"/></filter>'+
+  '</defs>'+st+arcs+moon+m+'</svg>'}
+function tr(){document.documentElement.lang=L;document.querySelectorAll("[data-en]").forEach(function(e){if(e.dataset.te===undefined)e.dataset.te=e.innerHTML;e.innerHTML=L==="te"?e.dataset.te:e.dataset.en});$("q").placeholder=T("పుస్తకం వెతకండి…","Search books…");$("lg").textContent=L==="te"?"🌐 EN":"🌐 తెలుగు"}
+function chips(){var total=cat<0?BOOKS.length:BOOKS.filter(function(book){return book.c===cat}).length;
+ $("catValue").textContent=cat<0?T("అన్ని వర్గాలు","All categories"):categoryName(CATS[cat]);$("catCount").innerHTML=BOOKICON+'<span>'+total+'</span>';
+ var h='<button class="cat-option" type="button" role="option" aria-selected="'+(cat<0)+'" data-category="-1"><span class="cat-option-name">'+T("అన్ని వర్గాలు","All categories")+'</span><span class="cat-option-count">'+BOOKICON+BOOKS.length+'</span><svg class="cat-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg></button>';
+ CATS.forEach(function(name,i){var count=BOOKS.filter(function(book){return book.c===i}).length;h+='<button class="cat-option" type="button" role="option" aria-selected="'+(cat===i)+'" data-category="'+i+'"><span class="cat-option-name">'+esc(categoryName(name))+'</span><span class="cat-option-count">'+BOOKICON+count+'</span><svg class="cat-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg></button>'});$("catMenu").innerHTML=h}
+function setCategoryMenu(open){var picker=$("catPicker");picker.classList.toggle("open",open);$("catTrigger").setAttribute("aria-expanded",String(open));$("catMenu").hidden=!open}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;setTimeout(function(){t.classList.add("in")},+t.dataset.k||0);io.unobserve(t)}})},{threshold:.08});
+function observe(s,st){document.querySelectorAll(s).forEach(function(el,k){if(el.classList.contains("in"))return;el.dataset.k=(k%6)*st;io.observe(el)})}
+function cardMarkup(book,index){var title=esc(book.te);return '<article class="bk"><div class="cov"><img src="book-thumbs/png/'+encodeURIComponent(book.png)+'" alt="'+title+'" loading="lazy"><button class="shr" data-share="'+index+'" aria-label="'+T("పంచుకోండి","Share")+'"><span class="svg-wrapper-1"><span class="svg-wrapper">'+SHARE+'</span></span></button></div><h3>'+title+'</h3><div class="act"><a class="dl" data-dl href="'+book.u+'" target="_blank" rel="noopener"><span class="ic">'+ARROW+'</span><span class="tx">'+T("డౌన్‌లోడ్","Download")+'</span></a></div></article>'}
+function render(){var q=$("q").value.trim().toLowerCase(),n=0,h="";
+ if(LV){var lastCategory=-1;BOOKS.forEach(function(b,i){if((cat>=0&&b.c!==cat)||(q&&(b.te+CATS[b.c]).toLowerCase().indexOf(q)<0))return;n++;if(lastCategory!==b.c){h+='<h3 class="group-title h">'+esc(categoryName(CATS[b.c]))+'</h3>';lastCategory=b.c}h+=cardMarkup(b,i)})}
+ else{CATS.forEach(function(category,categoryIndex){var samples=[];BOOKS.forEach(function(b,i){if(b.c===categoryIndex&&(cat<0||b.c===cat)&&(!q||(b.te+category).toLowerCase().indexOf(q)>=0)&&samples.length<previewBookLimit)samples.push({book:b,index:i})});if(!samples.length)return;n+=samples.length;h+='<section class="preview-group"><h3 class="group-title h">'+esc(categoryName(category))+'</h3><div class="preview-row'+(viewMode==="list"?' list-view':'')+'">'+samples.map(function(item){return cardMarkup(item.book,item.index)}).join('')+'</div></section>'})}
+ grid.innerHTML=h;grid.classList.toggle("list-view",LV&&viewMode==="list");document.querySelectorAll("[data-view]").forEach(function(button){button.setAttribute("aria-pressed",String(button.dataset.view===viewMode))});$("empty").style.display=n?"none":"block";observe(".bk",70)}
+function loadBooks(){fetch("book-thumbs/books.json").then(function(response){if(!response.ok)throw new Error("Could not load books.json");return response.json()}).then(function(data){
+ CATS=Array.from(new Set(data.map(function(book){return book.category})));BOOKS=data.map(function(book){return {c:CATS.indexOf(book.category),te:book.title_telugu,en:book.title_telugu,png:book.png,u:"https://drive.google.com/file/d/"+encodeURIComponent(book.drive_id)+"/view"}});
+ chips();render();setTimeout(catLoop,700)
+ }).catch(function(error){console.error(error);$("empty").textContent="పుస్తకాలు లోడ్ కాలేదు · Books could not be loaded";$("empty").style.display="block"})}
+function share(i){var b=BOOKS[i],title=(b?(L==="te"?b.te:b.en):T("తెలుగు ఖురాన్","Telugu Quran"))+" – CPS Telugu",url=b?b.u:DRIVE,e=encodeURIComponent;
+ $("st").textContent=title;$("lk").textContent=url;$("sm").style.background=b?"linear-gradient(150deg,"+COL[b.c]+",#04120f)":"linear-gradient(145deg,#2a5fa8,#0f2f66)";
+ var t=[["https://wa.me/?text="+e(title+"\n"+url),"#25D366","💬","WhatsApp"],["https://t.me/share/url?url="+e(url)+"&text="+e(title),"#229ED9","✈️","Telegram"],["mailto:?subject="+e(title)+"&body="+e(title+"\n"+url),"#7a5af8","✉️","Email"]];
+ var h=t.map(function(x){return '<a href="'+x[0]+'" target="_blank" rel="noopener"><i style="background:'+x[1]+'">'+x[2]+'</i>'+x[3]+'</a>'}).join("");
+ h+='<button id="cpl"><i style="background:#0b3b2a">🔗</i>'+T("కాపీ","Copy link")+'</button>';
+ if(navigator.share)h+='<button id="mr"><i style="background:#c8921a">⋯</i>'+T("మరిన్ని","More")+'</button>';
+ $("so").innerHTML=h;sd.showModal();
+ $("cpl").onclick=function(){try{navigator.clipboard.writeText(url)}catch(x){}sd.close();toast(T("లింక్ కాపీ అయింది","Link copied"))};
+ if($("mr"))$("mr").onclick=function(){navigator.share({title:title,url:url}).catch(function(){})}}
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("on");setTimeout(function(){t.classList.remove("on")},1800)}
+document.addEventListener("click",function(e){var s=e.target.closest("[data-share]"),d=e.target.closest("[data-dl]");
+ if(s)share(+s.dataset.share);
+ if(d){e.preventDefault();if(d.classList.contains("busy"))return;var tx=d.querySelector(".tx"),ic=d.querySelector(".ic"),href=d.href;
+  d.classList.add("busy");tx.textContent=T("సిద్ధమవుతోంది…","Preparing…");
+  setTimeout(function(){if(!window.open(href,"_blank"))location.href=href;d.classList.remove("busy");d.classList.add("done");ic.innerHTML=CHECK;tx.textContent=T("పూర్తయింది","Done");
+   setTimeout(function(){d.classList.remove("done");ic.innerHTML=ARROW;tx.textContent=T("డౌన్‌లోడ్","Download")},2200)},1000)}});
+$("catTrigger").addEventListener("click",function(){setCategoryMenu($("catMenu").hidden)});
+$("catMenu").addEventListener("click",function(e){var option=e.target.closest("[data-category]");if(!option)return;cat=Number(option.dataset.category);chips();render();setCategoryMenu(false);$("catTrigger").focus()});
+document.querySelectorAll("[data-view]").forEach(function(button){button.addEventListener("click",function(){viewMode=button.dataset.view;render()})});
+document.addEventListener("click",function(e){if(!e.target.closest("#catPicker"))setCategoryMenu(false)});
+addEventListener("resize",function(){var nextLimit=innerWidth>=1024?4:2;if(nextLimit!==previewBookLimit){previewBookLimit=nextLimit;if(!LV)render()}},{passive:true});
+$("q").addEventListener("input",function(){$("sb").classList.toggle("has",!!this.value);render()});
+$("clr").onclick=function(){$("q").value="";$("sb").classList.remove("has");$("q").focus();render()};
+document.addEventListener("keydown",function(e){if(e.key==="/"&&document.activeElement.tagName!=="INPUT"){e.preventDefault();$("q").focus()}if(e.key==="Escape"&&!$("catMenu").hidden){setCategoryMenu(false);$("catTrigger").focus()}});
+$("lg").onclick=function(){L=L==="te"?"en":"te";tr();chips();render();if($("cw").innerHTML)catRender(true)};
+sd.addEventListener("click",function(e){if(e.target===sd)sd.close()});
+addEventListener("scroll",function(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;$("sp").style.transform="scaleX("+(h>0?y/h:0)+")"},{passive:true});
+function count(id,to){var el=$(id),v=0,s=setInterval(function(){el.textContent=++v;if(v>=to)clearInterval(s)},60)}
+var ci=0;
+function catRender(inst){var el=$("cw");el.className="cw h";
+ el.innerHTML=categoryName(CATS[ci]).split(" ").map(function(w,i){return '<span class="w"><span class="wi" style="transition-delay:'+(inst?0:i*90)+'ms">'+w+'</span></span>'}).join("");
+ $("cn").textContent="0"+(ci+1)+" / 0"+CATS.length;
+ void el.offsetWidth;el.classList.add("on");
+ if(inst)return;var b=$("cb");b.style.transition="none";b.style.transform="scaleX(0)";void b.offsetWidth;b.style.transition="transform 3.2s linear";b.style.transform="scaleX(1)"}
+function catLoop(){catRender();setTimeout(function(){var el=$("cw");el.classList.remove("on");el.classList.add("out");setTimeout(function(){ci=(ci+1)%CATS.length;catLoop()},550)},3200)}
+$("ros").innerHTML=art();
+var w=["శాంతి · Peace","ఆధ్యాత్మికత · Spirituality","ఖురాన్ · Quran","విశ్వాసం · Faith","సత్యం · Truth","కరుణ · Mercy"],mq="";
+for(var k=0;k<4;k++)w.forEach(function(x){mq+="<span>✦ "+x+"</span>"});$("mq").innerHTML=mq;
+document.querySelectorAll(".ic").forEach(function(e){e.innerHTML=ARROW});
+function route(){LV=location.hash==="#/library";document.body.classList.toggle("lv",LV);render();var id=location.hash.slice(1);if(LV||location.hash==="#/")scrollTo(0,0);else if(id&&$(id))setTimeout(function(){$(id).scrollIntoView()},60)}
+addEventListener("hashchange",route);tr();chips();route();observe(".rv",0);loadBooks();
+var t0=Date.now();
+Promise.race([document.fonts?document.fonts.ready:Promise.resolve(),new Promise(function(r){setTimeout(r,2500)})]).then(function(){setTimeout(function(){$("pre").classList.add("out");document.body.classList.add("ready");setTimeout(function(){$("pre").remove()},1400)},Math.max(0,2800-(Date.now()-t0)))});
+</script>
+</body>
+</html>

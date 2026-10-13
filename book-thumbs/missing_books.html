@@ -1,0 +1,21 @@
+<!doctype html><meta charset=utf-8>
+<title>Missing books</title><style>body{font-family:sans-serif;margin:30px}
+td,th{padding:6px 10px;border-bottom:1px solid #ccc;text-align:left}</style>
+<h2>Books still to download: 0 of 64</h2>
+<p>Click a name, download the PDF from Drive, and put it in the <b>my_pdfs</b> folder.</p>
+<button id=all style="font-size:18px;padding:10px 20px;cursor:pointer">⬇ Download all 0 PDFs</button>
+<span id=st style="margin-left:15px"></span>
+<table><tr><th>Done</th><th>#</th><th>File (click to open)</th><th>Telugu title</th><th>Category</th></tr>
+</table>
+<script>
+document.getElementById('all').onclick=async()=>{
+ const L=[...document.querySelectorAll('a.dl')];
+ for(let i=0;i<L.length;i++){
+  document.getElementById('st').textContent='Starting '+(i+1)+' of '+L.length+' ... (allow multiple downloads if Chrome asks)';
+  const f=document.createElement('iframe');f.style.display='none';f.src=L[i].href;document.body.appendChild(f);
+  L[i].closest('tr').querySelector('input').checked=true;
+  await new Promise(r=>setTimeout(r,4000));
+ }
+ document.getElementById('st').textContent='Done. Check your Downloads folder.';
+};
+</script>
