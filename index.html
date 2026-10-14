@@ -144,6 +144,8 @@ body:not(.lv) .grid{display:block}
 footer{background:#04120f;color:#eef5ea;border-radius:32px 32px 0 0;margin-top:30px;padding:48px 0 24px;font-family:Outfit;font-size:14px}
 .fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px}
 .fg a{display:block;padding:3px 0;color:#ffffffcc;transition:.2s}.fg a:hover{color:#e8b52b}
+.contact-phones{display:flex;flex-direction:column;align-items:flex-start;gap:0;line-height:1.35}
+.fg .contact-phones a{padding:0}
 .fg h4{font-weight:500;color:#e8b52b;margin-bottom:8px}
 .cp{margin-top:34px;padding-top:18px;border-top:1px solid #ffffff2a;text-align:center;font-size:12px;color:#ffffff99}
 dialog{border:1px solid var(--line);border-radius:24px;background:var(--card);color:var(--fg);padding:24px;width:min(360px,92vw);margin:auto}
@@ -246,7 +248,7 @@ dialog[open]{animation:sheet .45s cubic-bezier(.2,.9,.2,1)}
 .qt .q{font-weight:600;font-size:clamp(1.2rem,3vw,1.85rem);line-height:1.85;color:#f4f1e6}
 .qt figcaption{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:26px;font:500 13px/1.4 Outfit;letter-spacing:.12em;color:#e8b52b}
 .qt .ln{height:1px;width:clamp(24px,8vw,60px);background:linear-gradient(90deg,transparent,#e8b52b)}.qt .ln:last-child{transform:scaleX(-1)}
-@media(max-width:600px){.qt{padding:62px 22px 28px}}
+@media(max-width:600px){.qt{padding:62px 22px 28px}.about p,.qr p{font-size:16px}}
 .lib{z-index:2}
 .more{text-align:center;margin-top:34px}
 .more .dl{flex:none;padding:14px 32px;font:500 15px Outfit}
@@ -278,7 +280,7 @@ body.ready .ros .tw{animation:tw 3.2s ease-in-out 3s infinite,fadein 1s ease 2s 
 @media(max-width:700px){.search kbd{display:none}}
 @media(min-width:601px) and (max-width:1023px){.logo img{width:58px}.preview-row:not(.list-view){grid-template-columns:repeat(2,minmax(0,240px));justify-content:center;gap:22px}}
 @media(max-width:600px){.logo img{width:48px}.preview-row:not(.list-view){grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.preview-row.list-view .bk{gap:10px;padding:8px}.preview-row.list-view .cov{width:56px}.preview-row.list-view .act{flex:0 0 100px}}
-@media(max-width:600px){.nl{gap:6px}.nl a,.nl button{padding:8px 11px 5px;font-size:12px}.nl a:nth-child(2),.logo span{display:none}.tools{align-items:stretch}.search{flex:1 1 100%;width:100%;max-width:none}.cat-picker{flex:1 1 auto}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid.list-view{grid-template-columns:1fr}.grid.list-view .bk{gap:10px;padding:8px}.grid.list-view .cov{width:56px}.grid.list-view .act{flex:0 0 100px}.view-toggle{align-self:center}.bk{padding:8px;border-radius:18px}.cov{padding:12px}.cov .t{font-size:1.05rem}.dl{font-size:12px;padding:9px 4px}.qr{margin:20px 12px}.qr .in{padding:40px 20px}.lib{padding-top:44px}.about{padding:52px 18px 90px}.about p{text-align:justify;text-align-last:left}}
+@media(max-width:600px){.nl{gap:6px}.nl a,.nl button{padding:8px 11px 5px;font-size:12px}.nl a:nth-child(2),.logo span{display:none}.tools{align-items:stretch}.search{flex:1 1 100%;width:100%;max-width:none}.cat-picker{flex:1 1 auto}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid.list-view{grid-template-columns:1fr}.grid.list-view .bk{gap:10px;padding:8px}.grid.list-view .cov{width:56px}.grid.list-view .act{flex:0 0 100px}.view-toggle{align-self:center}.bk{padding:8px;border-radius:18px}.cov{padding:12px}.cov .t{font-size:1.05rem}.dl{font-size:12px;padding:9px 4px}.qr{margin:20px 12px}.qr .in{padding:40px 20px}.qr .cv{width:min(160px,55%)}.lib{padding-top:44px}.about{padding:52px 18px 90px;padding-left:22px}.about p{text-align:justify;text-align-last:left}}
 @media(max-width:320px){.nl a:nth-child(3){display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.a,.rv,.bk{opacity:1!important;transform:none!important}#pre{display:none}body:not(.ready){overflow:auto}.ros .dr{stroke-dashoffset:0!important;fill-opacity:1!important}.ros .hl,.ros .tw{opacity:1!important}}
 @media(prefers-reduced-motion:reduce){#pre{display:grid}#pre .fr{stroke-dashoffset:0;fill-opacity:1;stroke-opacity:0}#pre .t1,#pre .t2{opacity:1;transform:none}#pre .sh,#pre .bar{display:none}}
@@ -337,7 +339,7 @@ body.ready .ros .tw{animation:tw 3.2s ease-in-out 3s infinite,fadein 1s ease 2s 
   <div class="fg rv">
     <div><h4>Explore</h4><a href="#/library">Library</a><a href="#quran">Telugu Quran</a><a href="#">CPS Global</a><a href="#">Spirit Of Islam</a></div>
     <div><h4>Reach us</h4><a href="tel:+919845576070">Call Us</a><a href="https://wa.me/919845576070">WhatsApp Us</a><a href="mailto:info@example.com">Email Us</a></div>
-    <div><h4>Contact Info</h4><span style="color:#ffffffbb;line-height:1.9">Bengaluru, Karnataka<br>+91 9845576070<br>9035719663 · 8050209492</span></div>
+    <div><h4>Contact Info</h4><span style="color:#ffffffbb">Bengaluru, Karnataka</span><div class="contact-phones"><a href="tel:+919845576070">+91 9845576070</a><a href="tel:+919035719663">+91 9035719663</a><a href="tel:+918050209492">+91 8050209492</a></div></div>
   </div>
   <div class="cp">Designed with 🤍 by Md Abullais</div>
 </div></footer>
